@@ -28,17 +28,14 @@ namespace contactos2
         {
             string phone = textBox1.Text.Trim();
 
-            // Validar el número de teléfono
             if (!checkPhone(phone))
             {
                 MessageBox.Show("Por favor, introduce un número de teléfono válido (11 dígitos).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Buscar el contacto en la lista compartida
             ListaContactos.Contact contact = ListaContactos.listaContactos.Find(c => c.Phone == phone);
 
-            // Mostrar el resultado en textBox2
             if (contact != null)
             {
                 textBox2.Text = $"Nombre: {contact.Name}\r\nTeléfono: {contact.Phone}";
@@ -47,6 +44,7 @@ namespace contactos2
             {
                 textBox2.Text = "No se encontró ningún contacto con ese número.";
             }
+            
         }
 
 
@@ -85,6 +83,11 @@ namespace contactos2
         private void Form2_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

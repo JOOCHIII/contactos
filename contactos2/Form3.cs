@@ -34,36 +34,31 @@ namespace contactos2
             string name = textBox1.Text.Trim();
             string phone = textBox2.Text.Trim();
 
-            // Validar que el nombre no esté vacío
             if (string.IsNullOrEmpty(name))
             {
                 MessageBox.Show("El nombre no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Validar el teléfono: debe ser un número de 11 dígitos
             if (!checkPhone(phone))
             {
                 MessageBox.Show("Por favor, introduce un número de teléfono válido (11 dígitos).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Verificar si el contacto ya existe en la lista por número de teléfono
             if (ListaContactos.listaContactos.Any(c => c.Phone == phone))
             {
                 MessageBox.Show("El número de teléfono ya está registrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Agregar el nuevo contacto a la lista
             ListaContactos.listaContactos.Add(new ListaContactos.Contact { Name = name, Phone = phone });
 
-            // Mostrar mensaje de éxito
             MessageBox.Show("Contacto agregado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // Limpiar los campos de texto
             textBox1.Clear();
             textBox2.Clear();
+            this.Close();
         }
         private bool checkPhone(string phone)
         {

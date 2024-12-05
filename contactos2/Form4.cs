@@ -21,42 +21,37 @@ namespace contactos2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string currentPhone = textBox1.Text.Trim(); // Número de teléfono actual (buscado)
-            string newPhone = textBox2.Text.Trim(); // Nuevo número de teléfono (actualizado)
+            string currentPhone = textBox1.Text.Trim(); 
+            string newPhone = textBox2.Text.Trim();
 
-            // Verificar que los campos no estén vacíos
             if (string.IsNullOrEmpty(currentPhone) || string.IsNullOrEmpty(newPhone))
             {
                 MessageBox.Show("Por favor, ingresa el número de teléfono actual y el nuevo número de teléfono.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Validar el nuevo número de teléfono
             if (!checkPhone(newPhone))
             {
                 MessageBox.Show("Por favor, introduce un número de teléfono válido (11 dígitos).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Buscar el contacto en la lista usando el número de teléfono original
             Contact contactToUpdate = ListaContactos.listaContactos.FirstOrDefault(c => c.Phone == currentPhone);
 
             if (contactToUpdate != null)
             {
-                // Si el contacto existe, actualizamos el número de teléfono
                 contactToUpdate.Phone = newPhone;
 
                 MessageBox.Show("Número de teléfono actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                // Si el contacto no existe
                 MessageBox.Show("No se encontró ningún contacto con ese número de teléfono.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            // Limpiar los campos después de actualizar
             textBox1.Clear();
             textBox2.Clear();
+            this.Close();
         }
 
         private bool checkPhone(string phone)
@@ -94,6 +89,11 @@ namespace contactos2
         }
 
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form4_Load(object sender, EventArgs e)
         {
 
         }
