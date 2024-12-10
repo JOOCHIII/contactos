@@ -28,16 +28,14 @@ namespace contactos2
         private void button1_Click(object sender, EventArgs e)
         {
             string phone = textBox1.Text.Trim();
-            string name = textBox3.Text.Trim(); // Obtener el nombre desde el nuevo TextBox
+            string name = textBox3.Text.Trim(); 
 
-            // Validar si se introdujo un teléfono o un nombre
             if (string.IsNullOrEmpty(phone) && string.IsNullOrEmpty(name))
             {
                 MessageBox.Show("Por favor, ingresa un número de teléfono o un nombre para buscar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Si se proporcionó un teléfono, buscar por teléfono
             if (!string.IsNullOrEmpty(phone))
             {
                 if (!checkPhone(phone))
@@ -58,7 +56,6 @@ namespace contactos2
                 }
             }
 
-            // Si se proporcionó un nombre, buscar por nombre
             else if (!string.IsNullOrEmpty(name))
             {
                 ListaContactos.Contact contact = ListaContactos.listaContactos
