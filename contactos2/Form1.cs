@@ -12,48 +12,53 @@ namespace contactos2
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        private String nombre;
+        public Form1(string nombre)
         {
             InitializeComponent();
+            this.nombre = nombre;
+
         }
-      
+
         private void Form1_Load(object sender, EventArgs e)
         {
+            label1.Text = " hola " + nombre;
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Crear una instancia de Form2 y mostrarla
             Form2 form2 = new Form2();
             form2.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            // Crear una instancia de Form3 y mostrarla
+            
             Form3 form3 = new Form3();
             form3.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            // Crear una instancia de Form4 y mostrarla
             Form4 form4 = new Form4();
             form4.Show();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            // Crear una instancia de Form5 y mostrarla
             Form5 form5 = new Form5();
             form5.Show();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            // Crear una instancia de Form6 y mostrarla
         this.Close();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

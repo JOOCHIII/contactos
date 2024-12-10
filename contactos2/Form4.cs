@@ -21,12 +21,11 @@ namespace contactos2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string oldPhone = textBox1.Text.Trim();   // Teléfono antiguo
-            string newPhone = textBox2.Text.Trim();   // Nuevo teléfono
-            string newName = textBox3.Text.Trim();    // Nuevo nombre
-            string oldName = textBox4.Text.Trim();    // Nombre antiguo
+            string oldPhone = textBox1.Text.Trim();  
+            string newPhone = textBox2.Text.Trim();  
+            string newName = textBox3.Text.Trim();   
+            string oldName = textBox4.Text.Trim();   
 
-            // Validar que todos los campos estén completos
             if (string.IsNullOrEmpty(oldPhone) || string.IsNullOrEmpty(newPhone) ||
                 string.IsNullOrEmpty(newName) || string.IsNullOrEmpty(oldName))
             {
@@ -34,28 +33,25 @@ namespace contactos2
                 return;
             }
 
-            // Validar nuevo teléfono
             if (!checkPhone(newPhone))
             {
                 MessageBox.Show("Por favor, introduce un número de teléfono válido (11 dígitos).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Validar nuevo nombre
             if (!checkName(newName))
             {
                 MessageBox.Show("Por favor, introduce un nombre válido (solo letras y espacios).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Buscar el contacto por nombre antiguo y teléfono antiguo
             Contact contactToUpdate = ListaContactos.listaContactos
                 .FirstOrDefault(c => c.Name.Equals(oldName, StringComparison.OrdinalIgnoreCase)
                                   && c.Phone == oldPhone);
 
             if (contactToUpdate != null)
             {
-                // Actualizar los datos del contacto
+                
                 contactToUpdate.Name = newName;
                 contactToUpdate.Phone = newPhone;
 
@@ -66,7 +62,7 @@ namespace contactos2
                 MessageBox.Show("No se encontró ningún contacto con ese nombre y número de teléfono antiguos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            // Limpiar los campos
+            
             textBox1.Clear();
             textBox2.Clear();
             textBox3.Clear();

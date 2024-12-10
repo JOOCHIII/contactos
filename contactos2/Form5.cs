@@ -45,42 +45,42 @@ namespace contactos2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string nameToDelete = textBox1.Text.Trim(); // Nombre del contacto a eliminar
-            string phoneToDelete = textBox2.Text.Trim(); // Número de teléfono del contacto a eliminar
+            string nameToDelete = textBox1.Text.Trim(); 
+            string phoneToDelete = textBox2.Text.Trim(); 
 
-            // Verificar si ambos campos están vacíos
+            
             if (string.IsNullOrEmpty(nameToDelete) && string.IsNullOrEmpty(phoneToDelete))
             {
                 MessageBox.Show("Por favor, ingresa el nombre o el número de teléfono del contacto que deseas eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Buscar el contacto por nombre si el campo de nombre no está vacío
+            
             if (!string.IsNullOrEmpty(nameToDelete))
             {
                 Contact contactByName = ListaContactos.listaContactos.FirstOrDefault(c => c.Name.Equals(nameToDelete, StringComparison.OrdinalIgnoreCase));
                 if (contactByName != null)
                 {
-                    // Si el contacto por nombre se encuentra, eliminarlo
+                   
                     ListaContactos.listaContactos.Remove(contactByName);
                     MessageBox.Show("Contacto eliminado correctamente por nombre.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    textBox1.Clear(); // Limpiar el campo de nombre
+                    textBox1.Clear();
                 }
                 else
                 {
                     MessageBox.Show("No se encontró ningún contacto con ese nombre.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            // Buscar el contacto por teléfono si el campo de teléfono no está vacío
+           
             else if (!string.IsNullOrEmpty(phoneToDelete))
             {
                 Contact contactByPhone = ListaContactos.listaContactos.FirstOrDefault(c => c.Phone == phoneToDelete);
                 if (contactByPhone != null)
                 {
-                    // Si el contacto por teléfono se encuentra, eliminarlo
+                    
                     ListaContactos.listaContactos.Remove(contactByPhone);
                     MessageBox.Show("Contacto eliminado correctamente por teléfono.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    textBox2.Clear(); // Limpiar el campo de teléfono
+                    textBox2.Clear(); 
                 }
                 else
                 {
